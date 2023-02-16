@@ -1,0 +1,33 @@
+{
+  "name": "firebase-auth-express",
+  "version": "1.0.0",
+  "description": "Implementation of the firebase authentication service in a backend made in NodeJS",
+  "main": "index.js",
+  "private": "true",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davc93/firebase-auth-middleware-for-nodejs.git"
+  },
+  "keywords": [
+    "nodejs",
+    "firebase",
+    "authentication"
+  ],
+  "author": "Diego Vergara <davc93@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davc93/firebase-auth-middleware-for-nodejs/issues"
+  },
+  "homepage": "https://github.com/davc93/firebase-auth-middleware-for-nodejs#readme",
+  "dependencies": {
+    "@firebase/app-types": "0.x",
+    "dotenv": "^16.0.3",
+    "firebase-admin": "^11.4.1"
+  }
+}
