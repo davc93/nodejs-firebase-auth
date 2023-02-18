@@ -6,19 +6,4 @@ The following project is an implementation of the firebase authentication servic
 - Manage users from the Firebase suite and use associated services such as notifications and emails
 - Have a system already tested and constantly improved by Google
 
-## Usage
 
-### Installation
-
-
-## HTTP REQUEST
-
-the http request needs the field "authorization" in the header and the TOKEN clean without Bearer, basic,etc...
-
-```json
-
-{
-    "authorization":TOKEN
-}
-
-```
