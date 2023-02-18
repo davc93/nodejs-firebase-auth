@@ -14,6 +14,11 @@
   -webkit-text-size-adjust: 100%;
 }
 
+body{
+  margin: 0;
+  padding: 0;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -23,24 +28,10 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 }
 
 .logo {
@@ -94,4 +85,67 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+.inactive{
+  display: none;
+}
+
+
+nav ul{
+  display: flex;
+  gap: 30px;
+  justify-content: end;
+  margin-right: 40px;
+  align-items: center;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+/* pages */
+
+
+.login header{
+  display: flex;
+  justify-content: center;
+}
+
+.profile header{
+  display: flex;
+  justify-content: center;
+}
+.signup header{
+  display: flex;
+  justify-content: center;
+}
+
+
+/* login form */
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login section,.signup section{
+  display: flex;
+  justify-content: center;
+}
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  border: 1px solid #213547;
+  padding: 40px;
+}
+
+.form-container button {
+  align-self: center;
+}
+
+.input-group{
+  display: flex;
+  flex-direction: column;
 }

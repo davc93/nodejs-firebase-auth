@@ -2,7 +2,10 @@ const signUpEmailAndPassword = () => {
 
 }
 
-const loginEmailAndPassword = () => {}
+const loginEmailAndPassword = (email,password) => {
+
+    console.log(email,password)
+}
 
 const logout = () => {
 
@@ -18,7 +21,7 @@ const authObserver = () => {
 
 }
 
-export default {
+export default  {
     google,
     facebook,
     loginEmailAndPassword,

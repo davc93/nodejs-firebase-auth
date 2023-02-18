@@ -8,13 +8,87 @@
   </head>
   <body>
     <div id="app">
+      <nav id="nav">
+        <div class="menu">
+          <ul>
+            <li><a href="/">Login</a></li>
+            <li><a href="/signup">Sign Up</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><button type="button">Logout</button></li>
+          </ul>
+        </div>
+      </nav>
       <div id="pages">
-        <div class="login"></div>
-        <div class="sign-up" ></div>
-        <div class="profile"></div>
-        <div class="recovery"></div>
+        <div class="login">
+          <header>
+            <h1>Login</h1>
+          </header>
+          <main>
+            <section>
+              <div class="form-container">
+                <form id="login-form">
+                  <div class="input-group">
+                    <label for="login-form__email">Email</label
+                    ><input type="text" name="email" id="login-form__email" />
+                  </div>
+                  <div class="input-group">
+                    <label for="login-form__password">Password</label
+                    ><input
+                      type="password"
+                      name="password"
+                      id="login-form__password"
+                    />
+                  </div>
+                  <button type="submit">Login</button>
+                </form>
+              </div>
+            </section>
+          </main>
+        </div>
+        <div class="signup">
+          <header>
+            <h1>SignUp</h1>
+          </header>
+          <main>
+            <section>
+              <div class="form-container">
+                <form id="signup-form">
+                  <div class="input-group">
+                    <label for="signup-form__email">Email</label
+                    ><input type="text" name="email" id="signup-form__email" />
+                  </div>
+                  <div class="input-group">
+                    <label for="signup-form__password">Password</label
+                    ><input
+                      type="password"
+                      name="password"
+                      id="signup-form__password"
+                    />
+                  </div>
+                  <button type="submit">Login</button>
+                </form>
+                <button>Sign up with Google</button>
+              </div>
+            </section>
+          </main>
+          <main></main>
+        </div>
+        <div class="profile">
+          <header>
+            <h1>Profile</h1>
+          </header>
+        </div>
+        <div class="recovery">
+          <header>
+            <h1>Recovery</h1>
+          </header>
+        </div>
+        <div class="not-found">
+          <header>
+            <h1>Error 404, page not found</h1>
+          </header>
+        </div>
       </div>
-      <nav id="nav"></nav>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
