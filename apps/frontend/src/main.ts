@@ -1,6 +1,6 @@
 
 import auth from "./auth";
-import { navigation } from "./navigation";
+import { navigation, renderPage } from "./navigation";
 import { User } from "./models/user.model";
 
 export let globalUser: User = {
@@ -9,7 +9,7 @@ export let globalUser: User = {
   isVerified: false,
 };
 
-window.addEventListener("DOMContentLoaded", navigation);
+window.addEventListener("DOMContentLoaded", renderPage);
 auth.authObserver();
 const links = document.querySelectorAll("a");
 links.forEach((anchor: HTMLAnchorElement) => {
@@ -17,8 +17,8 @@ links.forEach((anchor: HTMLAnchorElement) => {
     event.preventDefault();
     const url = event.target.href;
     // console.log(url)
-    window.history.pushState({}, "", url);
-    navigation();
+    navigation(url)
+    
   });
 });
 
@@ -49,8 +49,7 @@ loginForm?.addEventListener("submit", async (event: any) => {
       loginMessage.textContent = `Logged succesfull ${user.email}`;
       event.target.reset();
       setTimeout(() => {
-        window.history.pushState({}, "", "/profile");
-        navigation();
+        navigation('/profile')
         loginMessage.textContent = null;
       }, 3000);
     } else {
@@ -80,12 +79,13 @@ signUpForm?.addEventListener("submit", async (event: any) => {
     signupMessage.textContent = `${error}`;
   }
 });
+export const emailAccount = document.querySelector('#email-account') as HTMLButtonElement
 
 const logout = document.querySelector("#logout");
 logout?.addEventListener("click", async () => {
   try {
     await auth.logout();
-    window.location.href = "/";
+    navigation('/')
     console.log("logout succesfull");
   } catch (error) {
     console.error(error);
@@ -102,8 +102,7 @@ googleButtons.forEach((button)=>{
       setTimeout(() => {
         loginMessage.textContent = null
         signupMessage.textContent = null
-        window.history.pushState({}, "", "/profile");
-        navigation();
+        navigation('/profile')
       }, 3000);
   })
 })

@@ -11,7 +11,7 @@ import {
 } from "firebase/auth";
 import { auth } from "./firebase";
 import { setElements } from "./navigation";
-import { globalUser } from "./main";
+import { emailAccount, globalUser } from "./main";
 
 const signUpEmailAndPassword = (email: string, password: string) => {
   return createUserWithEmailAndPassword(auth, email, password);
@@ -25,22 +25,13 @@ const sendVerificationEmail = (user:any) => {
 }
 
 const logout = async () => {
-  
+  globalUser.email = null
+  globalUser.isVerified = false
+  globalUser.token = null
   return signOut(auth);
   
 };
-const getUserInfo = () => {
-  
-  if ((document.querySelector('#profile__user-data')?.children.length == 0) && globalUser.isVerified ) {
-  
-    const container = document.createElement('div')
-    const email = document.createElement('h2')
-    email.textContent = globalUser.email
-    container.append(email)
-    document.querySelector('#profile__user-data')?.append(container)    
-  }
 
-}
 
 const google = async () => {
   try {
@@ -68,7 +59,7 @@ const authObserver = () => {
       globalUser.token = accessToken
       globalUser.isVerified = true
       setElements(globalUser)
-      getUserInfo()
+      emailAccount.textContent = globalUser.email
       console.log(`Logged ${email}`)
       console.log(globalUser)
     }
@@ -81,6 +72,8 @@ const authObserver = () => {
      else {
       // User is signed out
       // ...
+      
+      emailAccount.textContent = null
       setElements(globalUser)
       console.log('you have to login')
       

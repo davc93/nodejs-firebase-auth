@@ -2,21 +2,20 @@ import { globalUser } from "./main";
 import { User } from "./models/user.model";
 
 
-async function navigation () {
+
+function renderPage () {
   // detect path
   let currentPage: string | undefined;
   let path = window.location.pathname
-  if(path == '/'){
-    path = '/login'
-  }
+  
 
   const pages = document.querySelectorAll('#pages > *')
   
   //comparing pages with path
 
   pages.forEach((node)=>{
-    if(node.classList.contains(path.slice(1))){
-      currentPage = path.slice(1)
+    if(node.classList.contains(path)){
+      currentPage = path
       // console.log({'Page':currentPage})
       // console.log(currentPage)
     }
@@ -78,7 +77,12 @@ function setElements(user:User) {
   }
 }
 
+function navigation(page:string){
+  window.history.pushState({},"",page)
+  renderPage()
+}
 export {
-  navigation,
-  setElements
+  renderPage,
+  setElements,
+  navigation
 }
