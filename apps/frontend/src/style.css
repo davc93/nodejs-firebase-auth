@@ -149,3 +149,13 @@ form {
   display: flex;
   flex-direction: column;
 }
+footer{
+  width: 100%;
+  background: papayawhip;
+  align-self: flex-start;
+}
+footer >div{
+
+  padding: 20px 40px;
+  max-width: 280px;
+}

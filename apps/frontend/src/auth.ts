@@ -6,7 +6,6 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from "./firebase";
-import { navigation } from "./navigation";
 
 const signUpEmailAndPassword = (email: string, password: string) => {
   return createUserWithEmailAndPassword(auth, email, password);
@@ -23,7 +22,7 @@ const logout = async () => {
 };
 
 const google = () => {
-  const provider = new GoogleAuthProvider();
+  new GoogleAuthProvider();
 };
 const facebook = () => {};
 const authObserver = () => {
@@ -32,7 +31,7 @@ const authObserver = () => {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
-      console.log('Logged')
+      console.log(`Logged ${uid}`)
       
       // ...
     } else {
