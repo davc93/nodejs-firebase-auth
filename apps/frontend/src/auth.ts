@@ -2,7 +2,7 @@ const signUpEmailAndPassword = () => {
 
 }
 
-const loginEmailAndPassword = (email,password) => {
+const loginEmailAndPassword = (email:string,password:string) => {
 
     console.log(email,password)
 }

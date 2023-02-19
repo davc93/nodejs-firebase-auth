@@ -1,7 +1,6 @@
 import './style.css'
 import auth from './auth'
 import { navigation } from './navigation'
-import typescriptLogo from 'typescript.svg'
 
 
 window.addEventListener('DOMContentLoaded',navigation)
@@ -19,7 +18,7 @@ links.forEach((anchor:HTMLAnchorElement)=>{
 })
 
 const loginForm = document.querySelector('#login-form')
-loginForm?.addEventListener('submit',(event)=>{
+loginForm?.addEventListener('submit',(event:any)=>{
     event.preventDefault()
     const email = event.target.email.value
     const password = event.target.password.value
