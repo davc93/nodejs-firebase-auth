@@ -1,4 +1,4 @@
-import "./style.css";
+
 import auth from "./auth";
 import { navigation } from "./navigation";
 import { User } from "./models/user.model";
@@ -44,7 +44,7 @@ loginForm?.addEventListener("submit", async (event: any) => {
       globalUser.email = email;
       globalUser.token = accessToken;
       globalUser.isVerified = true;
-      console.log(globalUser);
+      
 
       loginMessage.textContent = `Logged succesfull ${user.email}`;
       event.target.reset();
@@ -92,14 +92,18 @@ logout?.addEventListener("click", async () => {
   }
 });
 
-const googleButton = document.querySelector('#google-button')
-googleButton?.addEventListener('click',async (event) => {
-  event.preventDefault()
-  try {
+const googleButtons = document.querySelectorAll('.google-button')
+googleButtons.forEach((button)=>{
+  button?.addEventListener('click',async (event) => {
+    event.preventDefault()
     await auth.google()
-    
-    
-  } catch (error) {
-    console.error(error)
-  }
+    loginMessage.textContent = 'Login succesfull!'
+    signupMessage.textContent = 'Login succesfull!'
+      setTimeout(() => {
+        loginMessage.textContent = null
+        signupMessage.textContent = null
+        window.history.pushState({}, "", "/profile");
+        navigation();
+      }, 3000);
+  })
 })

@@ -5,7 +5,8 @@ import {
   onAuthStateChanged,
   signOut,
   sendEmailVerification,
-  signInWithRedirect
+  
+  signInWithPopup
   
 } from "firebase/auth";
 import { auth } from "./firebase";
@@ -41,8 +42,20 @@ const getUserInfo = () => {
 
 }
 
-const google = () => {
-  return signInWithRedirect(auth, new GoogleAuthProvider())
+const google = async () => {
+  try {
+    const result = await signInWithPopup(auth, new GoogleAuthProvider())
+    const {user} = result
+    const userCredentials = GoogleAuthProvider.credentialFromResult(result)
+    globalUser.email = user.email as string;
+    globalUser.token = userCredentials?.accessToken as string
+    globalUser.isVerified = true;
+    console.log(user)
+    
+    
+  } catch (error) {
+    console.error(error)
+  }
 
 };
 const facebook = () => {};

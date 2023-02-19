@@ -56,6 +56,7 @@ h1 {
 }
 
 button {
+  width: 100%;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -128,6 +129,7 @@ nav ul li {
 form {
   display: flex;
   flex-direction: column;
+  gap:8px
 }
 
 .login section,.signup section{
@@ -147,9 +149,13 @@ form {
   align-self: center;
 }
 
+
 .input-group{
   display: flex;
   flex-direction: column;
+}
+.input-group input{
+  height: 20px;
 }
 footer{
   width: 100%;
@@ -161,4 +167,19 @@ footer >div{
 
   padding: 20px 40px;
   max-width: 280px;
+}
+button{
+
+}
+
+.google-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.google-button img {
+
+  width: 20px;
+  
 }

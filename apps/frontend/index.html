@@ -5,6 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + TS</title>
+    <link rel="stylesheet" href="/src/style.css">
   </head>
   <body>
     <div id="app">
@@ -39,7 +40,8 @@
                       id="login-form__password"
                     />
                   </div>
-                  <button type="submit">Login</button>
+                  <button type="submit">Login With Email</button>
+                  <button class="google-button"><img src="/google.svg" alt="Google">Login with Google</button>
                   <div class="submit-message">
                     <p></p>
                   </div>
@@ -68,12 +70,13 @@
                       id="signup-form__password"
                     />
                   </div>
-                  <button type="submit">Sign Up</button>
+                  <button type="submit">Sign Up with Email</button>
+                  <button class="google-button"><img src="/google.svg" alt="Google"> Sign up with Google</button>
+
                   <div class="submit-message">
                     <p></p>
                   </div>
                 </form>
-                <button id="google-button" >Sign up with Google</button>
               </div>
             </section>
           </main>
@@ -96,9 +99,6 @@
           <header>
             <h1>Error 404, page not found</h1>
           </header>
-        </div>
-        <div class="__/auth/handler">
-          <h1>Google Handler</h1>
         </div>
       </div>
     </div>
