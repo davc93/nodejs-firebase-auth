@@ -13,7 +13,7 @@ function navigation () {
   pages.forEach((node)=>{
     if(node.classList.contains(path.slice(1))){
       currentPage = path.slice(1)
-      console.log(currentPage)
+      // console.log(currentPage)
     }
 
   })
