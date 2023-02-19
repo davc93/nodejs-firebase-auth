@@ -151,8 +151,9 @@ form {
 }
 footer{
   width: 100%;
-  background: papayawhip;
+  background: darkgray; 
   align-self: flex-start;
+  margin-top: 40px;
 }
 footer >div{
 

@@ -1,3 +1,6 @@
+import { globalUser } from "./main";
+import { User } from "./models/user.model";
+
 function navigation () {
   // detect path
   let currentPage: string | undefined;
@@ -29,9 +32,49 @@ function navigation () {
       node.classList.remove('inactive')
     }
   })
+  setElements(globalUser)
+}
 
+
+function setElements(user:User) {
+  if(user.isVerified){
+    const privateElements = document.querySelectorAll('.private')
+    privateElements.forEach((element:any)=>{
+      if (element.parentNode.id !== 'pages') {
+      
+        element.classList.remove('inactive')  
+      }
+      
+    })
+    const onlyPublicElements = document.querySelectorAll('.only-public')
+    onlyPublicElements.forEach((element:any)=>{
+      if (element.parentNode.id !== 'pages') {
+        
+        element.classList.add('inactive')
+      }
+    })
+
+  } else {
+    const privateElements = document.querySelectorAll('.private')
+    privateElements.forEach((element:any)=>{
+      if (element.parentNode.id !=='pages') {
+        
+        element.classList.add('inactive')
+        // console.log(element.parentNode)
+      }
+    })
+    const onlyPublicElements = document.querySelectorAll('.only-public')
+    onlyPublicElements.forEach((element:any)=>{
+      if(element.parentNode.id !=='pages'){
+        // console.log(element.parentNode)
+        element.classList.remove('inactive')
+      }
+
+    })
+  }
 }
 
 export {
-  navigation
+  navigation,
+  setElements
 }

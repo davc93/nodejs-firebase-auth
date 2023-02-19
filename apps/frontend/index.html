@@ -11,15 +11,15 @@
       <nav id="nav">
         <div class="menu">
           <ul>
-            <li><a href="/">Login</a></li>
-            <li><a href="/signup">Sign Up</a></li>
-            <li><a href="/profile">Profile</a></li>
-            <li><button id="logout" type="button">Logout</button></li>
+            <li><a class="only-public" href="/">Login</a></li>
+            <li><a class="only-public" href="/signup">Sign Up</a></li>
+            <li><a class="private" href="/profile">Profile</a></li>
+            <li><button class="private"  id="logout" type="button">Logout</button></li>
           </ul>
         </div>
       </nav>
       <div id="pages">
-        <div class="login">
+        <div class="login only-public">
           <header>
             <h1>Login</h1>
           </header>
@@ -48,7 +48,7 @@
             </section>
           </main>
         </div>
-        <div class="signup">
+        <div class="signup only-public">
           <header>
             <h1>SignUp</h1>
           </header>
@@ -79,7 +79,7 @@
           </main>
           <main></main>
         </div>
-        <div class="profile">
+        <div class="profile private">
           <header>
             <h1>Profile</h1>
           </header>

@@ -4,8 +4,11 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signOut,
+  sendEmailVerification
 } from "firebase/auth";
 import { auth } from "./firebase";
+import { setElements } from "./navigation";
+import { globalUser } from "./main";
 
 const signUpEmailAndPassword = (email: string, password: string) => {
   return createUserWithEmailAndPassword(auth, email, password);
@@ -14,6 +17,9 @@ const signUpEmailAndPassword = (email: string, password: string) => {
 const loginEmailAndPassword = (email: string, password: string) => {
   return signInWithEmailAndPassword(auth, email, password);
 };
+const sendVerificationEmail = (user:any) => {
+  return sendEmailVerification(user)
+}
 
 const logout = async () => {
   
@@ -26,17 +32,26 @@ const google = () => {
 };
 const facebook = () => {};
 const authObserver = () => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
+  onAuthStateChanged(auth, (user:any) => {
+    if(user?.emailVerified){
+      const {accessToken,email} = user
+      globalUser.email = email
+      globalUser.token = accessToken
+      globalUser.isVerified = true
+      setElements(globalUser)
+      console.log(`Logged ${email}`)
+      console.log(globalUser)
+    }
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
-      const uid = user.uid;
-      console.log(`Logged ${uid}`)
+      
+
       
       // ...
-    } else {
+     else {
       // User is signed out
       // ...
+      setElements(globalUser)
       console.log('you have to login')
       
     }
@@ -50,4 +65,5 @@ export default {
   signUpEmailAndPassword,
   logout,
   authObserver,
+  sendVerificationEmail
 };
