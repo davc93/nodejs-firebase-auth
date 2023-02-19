@@ -30,7 +30,7 @@ const signupMessage = document.querySelector(
   "#signup-form .submit-message p"
 ) as Element;
 
-const loginForm = document.querySelector("#login-form");
+export const loginForm = document.querySelector("#login-form") as HTMLFormElement;
 loginForm?.addEventListener("submit", async (event: any) => {
   event.preventDefault();
   const email = event.target.email.value;
@@ -60,7 +60,7 @@ loginForm?.addEventListener("submit", async (event: any) => {
     loginMessage.textContent = `${error}`;
   }
 });
-const signUpForm = document.querySelector("#signup-form");
+export const signUpForm = document.querySelector("#signup-form") as HTMLFormElement
 signUpForm?.addEventListener("submit", async (event: any) => {
   event.preventDefault();
   const email = event.target.email.value;
@@ -91,3 +91,15 @@ logout?.addEventListener("click", async () => {
     console.error(error);
   }
 });
+
+const googleButton = document.querySelector('#google-button')
+googleButton?.addEventListener('click',async (event) => {
+  event.preventDefault()
+  try {
+    await auth.google()
+    
+    
+  } catch (error) {
+    console.error(error)
+  }
+})

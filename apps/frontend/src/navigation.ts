@@ -1,7 +1,10 @@
-import { globalUser } from "./main";
-import { User } from "./models/user.model";
+import { GoogleAuthProvider, getRedirectResult } from "firebase/auth";
 
-function navigation () {
+import { User } from "./models/user.model";
+import { auth } from "./firebase";
+
+
+async function navigation () {
   // detect path
   let currentPage: string | undefined;
   let path = window.location.pathname
@@ -16,14 +19,20 @@ function navigation () {
   pages.forEach((node)=>{
     if(node.classList.contains(path.slice(1))){
       currentPage = path.slice(1)
+      console.log({'Page':currentPage})
       // console.log(currentPage)
     }
 
   })
+  if(currentPage == '__/auth/handler'){
+    const userCred = await getRedirectResult(auth,new GoogleAuthProvider());
+    console.log(userCred)
+  }
 
   if(!currentPage){
     currentPage = 'not-found'
   }
+  
   // add class inactive
   pages.forEach((node)=>{
     if(!node.classList.contains(currentPage as string)){
@@ -32,7 +41,8 @@ function navigation () {
       node.classList.remove('inactive')
     }
   })
-  setElements(globalUser)
+ 
+
 }
 
 

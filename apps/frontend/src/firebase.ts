@@ -8,7 +8,7 @@ import { config } from "./config";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: config.firebaseApiKey,
-  authDomain: "fir-auth-nodejs-6d763.firebaseapp.com",
+  authDomain: "firebase-auth-middleware-for-nodejs-frontend.vercel.app",
   projectId: "fir-auth-nodejs-6d763",
   storageBucket: "fir-auth-nodejs-6d763.appspot.com",
   messagingSenderId: "730822438451",

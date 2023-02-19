@@ -4,7 +4,9 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signOut,
-  sendEmailVerification
+  sendEmailVerification,
+  signInWithRedirect
+  
 } from "firebase/auth";
 import { auth } from "./firebase";
 import { setElements } from "./navigation";
@@ -26,19 +28,34 @@ const logout = async () => {
   return signOut(auth);
   
 };
+const getUserInfo = () => {
+  
+  if ((document.querySelector('#profile__user-data')?.children.length == 0) && globalUser.isVerified ) {
+  
+    const container = document.createElement('div')
+    const email = document.createElement('h2')
+    email.textContent = globalUser.email
+    container.append(email)
+    document.querySelector('#profile__user-data')?.append(container)    
+  }
+
+}
 
 const google = () => {
-  new GoogleAuthProvider();
+  return signInWithRedirect(auth, new GoogleAuthProvider())
+
 };
 const facebook = () => {};
 const authObserver = () => {
   onAuthStateChanged(auth, (user:any) => {
+    
     if(user?.emailVerified){
       const {accessToken,email} = user
       globalUser.email = email
       globalUser.token = accessToken
       globalUser.isVerified = true
       setElements(globalUser)
+      getUserInfo()
       console.log(`Logged ${email}`)
       console.log(globalUser)
     }
@@ -55,6 +72,7 @@ const authObserver = () => {
       console.log('you have to login')
       
     }
+
   });
 };
 
