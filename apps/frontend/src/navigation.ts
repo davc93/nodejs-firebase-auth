@@ -1,85 +1,72 @@
-import { globalUser } from "./main";
-import { User } from "./models/user.model";
-
+import { globalUser } from './main'
+import { type User } from './models/user.model'
 
 function renderPage () {
-
   // detect path
-  let currentPage: string | undefined;
-  let path = window.location.pathname
-  
+  let currentPage: string | undefined
+  const path = window.location.pathname
 
   const pages = document.querySelectorAll('#pages > *')
-  
-  //comparing pages with path
 
-  pages.forEach((node)=>{
-    if(node.classList.contains(path)){
+  // comparing pages with path
+
+  pages.forEach((node) => {
+    if (node.classList.contains(path)) {
       currentPage = path
       // console.log({'Page':currentPage})
       // console.log(currentPage)
     }
-
   })
 
-  if(!currentPage){
+  if (!currentPage) {
     currentPage = 'not-found'
   }
-  
+
   // add class inactive
-  pages.forEach((node)=>{
-    if(!node.classList.contains(currentPage as string)){
+  pages.forEach((node) => {
+    if (!node.classList.contains(currentPage as string)) {
       node.classList.add('inactive')
     } else {
       node.classList.remove('inactive')
     }
   })
   setElements(globalUser)
-
 }
 
-
-function setElements(user:User) {
-  if(user.isVerified){
+function setElements (user: User) {
+  if (user.isVerified) {
     const privateElements = document.querySelectorAll('.private')
-    privateElements.forEach((element:any)=>{
+    privateElements.forEach((element: any) => {
       if (element.parentNode.id !== 'pages') {
-      
-        element.classList.remove('inactive')  
+        element.classList.remove('inactive')
       }
-      
     })
     const onlyPublicElements = document.querySelectorAll('.only-public')
-    onlyPublicElements.forEach((element:any)=>{
+    onlyPublicElements.forEach((element: any) => {
       if (element.parentNode.id !== 'pages') {
-        
         element.classList.add('inactive')
       }
     })
-
   } else {
     const privateElements = document.querySelectorAll('.private')
-    privateElements.forEach((element:any)=>{
-      if (element.parentNode.id !=='pages') {
-        
+    privateElements.forEach((element: any) => {
+      if (element.parentNode.id !== 'pages') {
         element.classList.add('inactive')
         // console.log(element.parentNode)
       }
     })
     const onlyPublicElements = document.querySelectorAll('.only-public')
-    onlyPublicElements.forEach((element:any)=>{
-      if(element.parentNode.id !=='pages'){
+    onlyPublicElements.forEach((element: any) => {
+      if (element.parentNode.id !== 'pages') {
         // console.log(element.parentNode)
         element.classList.remove('inactive')
       }
-
     })
   }
 }
 
-function navigation(page:string){
-  
-  window.history.pushState({},"",page)
+function navigation (page: string) {
+  window.history.pushState({}, '', page)
   renderPage()
 }
 export {

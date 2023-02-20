@@ -1,3 +1,1 @@
-export interface Validator {
-    (value:any): boolean | string
-}
+export type Validator = (value: any) => boolean | string
