@@ -15,7 +15,7 @@ export const loginMessage = document.querySelector(
   "#login-form .submit-message p"
 ) as Element;
 export const profileMessage = document.querySelector(
-  "#profile-form .submit-message p"
+  "#profile-form .submit-message"
 ) as Element;
 export const signupMessage = document.querySelector(
   "#signup-form .submit-message p"
@@ -27,3 +27,5 @@ export const googleButtons = document.querySelectorAll(
 export const links = document.querySelectorAll(
   "a"
 ) as NodeListOf<HTMLAnchorElement>;
+
+export const profileSelectLabel = document.querySelector("#profile-form__select--label") as HTMLLabelElement

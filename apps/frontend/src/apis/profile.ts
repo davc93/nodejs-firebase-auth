@@ -1,4 +1,5 @@
 import { config } from "../config"
+import { createDto } from "../models/api/profile.model"
 
 
 export default function profile() {
@@ -20,21 +21,25 @@ export default function profile() {
         }
     }
 
-    async function addInfo(token:string,info:any){
-        const response = await fetch(config.apiUri,{
-            method:'POST',
-            headers:{
-                "Content-Type":"application/json",
-                "Authorization":token,
+    async function addInfo(token:string,info:Partial<createDto>){
+        console.log(token,info)
+        // const response = await fetch(config.apiUri,{
+        //     method:'POST',
+        //     headers:{
+        //         "Content-Type":"application/json",
+        //         "Authorization":token,
                 
-            },
-            body:info
-        })
-        const {error,data} = await response.json()
-        if (error) {
-            throw new Error(data.message)
-        } else {
-            return data
+        //     },
+        //     body:JSON.stringify(info)
+        // })
+        // const {error,data} = await response.json()
+        // if (error) {
+        //     throw new Error(data.message)
+        // } else {
+        //     return data
+        // }
+        return {
+            message:"datos actualizados"
         }
     }
     async function updateAllInfo(token:string,info:any) {

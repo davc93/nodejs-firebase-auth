@@ -56,6 +56,7 @@ h1 {
 }
 
 button {
+  position: relative;
   width: 100%;
   border-radius: 8px;
   border: 1px solid transparent;
@@ -126,6 +127,42 @@ nav ul li {
   display: flex;
   justify-content: center;
 }
+#profile-form button[type='submit']{
+  position: relative;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loader span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background-color: #1a3942;
+  opacity: 0.5;
+  animation: loader 0.6s linear infinite;
+}
+
+.loader span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loader span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes loader {
+  0% { transform: scale(1); opacity: 1; }
+  40% { transform: scale(1); opacity: 0.5; }
+  80% { transform: scale(2.5); opacity: 0; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
 
 
 /* login form */
@@ -158,8 +195,18 @@ form {
   display: flex;
   flex-direction: column;
 }
-.input-group input{
+.input-group input {
   height: 20px;
+}
+.input-group select{
+  height: 30px;
+}
+.input-group input[type='file']{
+  height: 30px;
+}
+.submit-message{
+  display: flex;
+  flex-direction: column;
 }
 footer{
   width: 100%;

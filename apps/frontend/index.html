@@ -1,150 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-    <link rel="stylesheet" href="/src/style.css">
-  </head>
-  <body>
-    <div id="app">
-      <nav id="nav">
-        <div class="menu">
-          <ul>
-            <li><a class="only-public" href="/">Login</a></li>
-            <li><a class="only-public" href="/signup">Sign Up</a></li>
-            <li><a class="private" href="/profile">Profile</a></li>
-            <li><button class="private" id="email-account"></button></li>
-            <li><button class="private"  id="logout" type="button">Logout</button></li>
-          </ul>
-        </div>
-      </nav>
-      <div id="pages">
-        <div class="/ login only-public">
-          <header>
-            <h1>Login</h1>
-          </header>
-          <main>
-            <section>
-              <div class="form-container">
-                <form id="login-form">
-                  <div class="input-group">
-                    <label for="login-form__email">Email</label
-                    ><input type="text" name="email" id="login-form__email" />
-                  </div>
-                  <div class="input-group">
-                    <label for="login-form__password">Password</label
-                    ><input
-                      type="password"
-                      name="password"
-                      id="login-form__password"
-                    />
-                  </div>
-                  <button type="submit">Login With Email</button>
-                  <button class="google-button"><img src="/google.svg" alt="Google">Login with Google</button>
-                  <div class="submit-message">
-                    <p></p>
-                  </div>
-                </form>
-              </div>
-            </section>
-          </main>
-        </div>
-        <div class="/signup signup only-public">
-          <header>
-            <h1>SignUp</h1>
-          </header>
-          <main>
-            <section>
-              <div class="form-container">
-                <form id="signup-form">
-                  <div class="input-group">
-                    <label for="signup-form__email">Email</label
-                    ><input type="text" name="email" id="signup-form__email" />
-                  </div>
-                  <div class="input-group">
-                    <label for="signup-form__password">Password</label
-                    ><input
-                      type="password"
-                      name="password"
-                      id="signup-form__password"
-                    />
-                  </div>
-                  <button type="submit">Sign Up with Email</button>
-                  <button class="google-button"><img src="/google.svg" alt="Google"> Sign up with Google</button>
 
-                  <div class="submit-message">
-                    <p></p>
-                  </div>
-                </form>
-              </div>
-            </section>
-          </main>
-          <main></main>
-        </div>
-        <div class="/profile profile private">
-          <header>
-            <h1>Profile</h1>
-            <div id="profile__user-data">
-              <h2>Your Info</h2>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + TS</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <nav id="nav">
+      <div class="menu">
+        <ul>
+          <li><a class="only-public" href="/">Login</a></li>
+          <li><a class="only-public" href="/signup">Sign Up</a></li>
+          <li><a class="private" href="/profile">Profile</a></li>
+          <li><h3 class="private" id="email-account"></h3></li>
+          <li><button class="private" id="logout" type="button">Logout</button></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="pages">
+      <div class="/ login only-public">
+        <header>
+          <h1>Login</h1>
+        </header>
+        <main>
+          <section>
+            <div class="form-container">
+              <form id="login-form">
+                <div class="input-group">
+                  <label for="login-form__email">Email</label><input type="text" name="email" id="login-form__email" />
+                </div>
+                <div class="input-group">
+                  <label for="login-form__password">Password</label><input type="password" name="password"
+                    id="login-form__password" />
+                </div>
+                <button type="submit">Login With Email</button>
+                <button class="google-button"><img src="/google.svg" alt="Google">Login with Google</button>
+                <div class="submit-message">
+                  <p></p>
+                </div>
+              </form>
             </div>
-            
-          </header>
-          <main>
-            <section>
-              <h2>Edit your profile</h1>
+          </section>
+        </main>
+      </div>
+      <div class="/signup signup only-public">
+        <header>
+          <h1>SignUp</h1>
+        </header>
+        <main>
+          <section>
+            <div class="form-container">
+              <form id="signup-form">
+                <div class="input-group">
+                  <label for="signup-form__email">Email</label><input type="text" name="email"
+                    id="signup-form__email" />
+                </div>
+                <div class="input-group">
+                  <label for="signup-form__password">Password</label><input type="password" name="password"
+                    id="signup-form__password" />
+                </div>
+                <button type="submit">Sign Up with Email</button>
+                <button class="google-button"><img src="/google.svg" alt="Google"> Sign up with Google</button>
+
+                <div class="submit-message">
+                  <p></p>
+                </div>
+              </form>
+            </div>
+          </section>
+        </main>
+        <main></main>
+      </div>
+      <div class="/profile profile private">
+        <header>
+          <h1>Profile</h1>
+          <div id="profile__user-data">
+            <h2>Your Info</h2>
+          </div>
+
+        </header>
+        <main>
+          <section>
+            <h2>Edit your profile</h1>
               <div class="form-container">
                 <form id="profile-form">
                   <div class="input-group">
-                    <label for="profile-form__phone">Phone</label
-                    ><input type="text" name="phone" id="profile-form__phone" />
+                    <label for="profile-form__avatar">Avatar</label>
+                    <input type="file" name="avatar" id="profile-form__avatar" multiple>
+                  </div>
+                  <div class="input-group" id="profile-form__select">
+                    <label for="profile-form__select" id="profile-form__select--label">Nationality</label>
                   </div>
                   <div class="input-group">
-                    <label for="profile-form__rut">Rut</label
-                    ><input
-                      type="text"
-                      name="rut"
-                      id="profile-form__rut"
-                    />
+                    <label for="profile-form__birthday">Birthday</label>
+                    <input type="date" name="birthday" id="profile-form__birthday">
                   </div>
                   <div class="input-group">
-                    <label for="profile-form__address">Address</label
-                    ><input
-                      type="text"
-                      name="address"
-                      id="profile-form__address"
-                    />
+                    <label for="profile-form__phone">Phone</label><input type="text" name="phone"
+                      id="profile-form__phone" />
                   </div>
-                  <button type="submit">Add Info</button>
+                  <div class="input-group">
+                    <label for="profile-form__rut">Rut</label><input type="text" name="rut" id="profile-form__rut" />
+                  </div>
+                  <div class="input-group">
+                    <label for="profile-form__address">Address</label><input type="text" name="address"
+                      id="profile-form__address" />
+                  </div>
+                  <button type="submit">
+                    Add Info</button>
                   <div class="submit-message">
-                    <p></p>
+                    
                   </div>
                 </form>
               </div>
-            </section>
-          </main>
+          </section>
+        </main>
 
-        </div>
-        <div class="/recovery recovery" >
-          <header>
-            <h1>Recovery</h1>
-          </header>
-        </div>
-        <div class="/not-found">
-          <header>
-            <h1>Error 404, page not found</h1>
-          </header>
-        </div>
+      </div>
+      <div class="/recovery recovery">
+        <header>
+          <h1>Recovery</h1>
+        </header>
+      </div>
+      <div class="/not-found">
+        <header>
+          <h1>Error 404, page not found</h1>
+        </header>
       </div>
     </div>
-    <footer>
-      <div>
-        <h3>Contact</h3>
-        <p>a Lot of times backend is not available for costs and unused, to run and test app, contact me clicking below</p>
-        <button onclick="window.location.href = 'https://davc93.dev/contact'" >Click Here</button>
-      </div>
-    </footer>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+  </div>
+  <footer>
+    <div>
+      <h3>Contact</h3>
+      <p>a Lot of times backend is not available for costs and unused, to run and test app, contact me clicking below
+      </p>
+      <button onclick="window.location.href = 'https://davc93.dev/contact'">Click Here</button>
+    </div>
+  </footer>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
