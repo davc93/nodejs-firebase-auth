@@ -1,0 +1,58 @@
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signOut,
+  sendEmailVerification,
+  signInWithPopup,
+} from "firebase/auth";
+import { auth } from "../firebase";
+import { globalUser } from "../main";
+
+
+const signUpEmailAndPassword = (email: string, password: string) => {
+  return createUserWithEmailAndPassword(auth, email, password);
+};
+
+const loginEmailAndPassword = (email: string, password: string) => {
+  return signInWithEmailAndPassword(auth, email, password);
+};
+const sendVerificationEmail = (user: any) => {
+  return sendEmailVerification(user);
+};
+
+const logout = async () => {
+  globalUser.email = null;
+  globalUser.isVerified = false;
+  globalUser.token = null;
+  return signOut(auth);
+};
+
+const google = async () => {
+  try {
+    const result = await signInWithPopup(auth, new GoogleAuthProvider());
+    const { user } = result;
+    const userCredentials = GoogleAuthProvider.credentialFromResult(result);
+    globalUser.email = user.email as string;
+    globalUser.token = userCredentials?.accessToken as string;
+    globalUser.isVerified = true;
+    console.log(user);
+  } catch (error) {
+    console.error(error);
+  }
+};
+const facebook = () => {};
+const authObserver = (callback: any) => {
+  onAuthStateChanged(auth, callback);
+};
+
+export default {
+  google,
+  facebook,
+  loginEmailAndPassword,
+  signUpEmailAndPassword,
+  logout,
+  authObserver,
+  sendVerificationEmail,
+};

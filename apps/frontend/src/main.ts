@@ -1,36 +1,52 @@
-
-import auth from "./auth";
-import { navigation, renderPage } from "./navigation";
+import auth from "./auth/auth";
+import { navigation, renderPage, setElements } from "./navigation";
 import { User } from "./models/user.model";
-
+import {
+  loginForm,
+  signUpForm,
+  loginMessage,
+  signupMessage,
+  links,
+  logout,
+  googleButtons,
+  emailAccount,
+  profileForm,
+  profileMessage,
+} from "./nodes";
+// import profile  from "./auth/profile";
 export let globalUser: User = {
   email: null,
   token: null,
-  isVerified: false,
+  isVerified: null,
 };
-
+// const api = profile()
 window.addEventListener("DOMContentLoaded", renderPage);
-auth.authObserver();
-const links = document.querySelectorAll("a");
+auth.authObserver(async (user: any) => {
+  if (user?.emailVerified) {
+    const { accessToken, email } = user;
+    globalUser.email = email;
+    globalUser.token = accessToken;
+    globalUser.isVerified = true;
+    setElements(globalUser);
+    emailAccount.textContent = globalUser.email;
+    // const userInfo = await api.getProfileInfo(globalUser.token as string)
+    // render
+  } else {
+    emailAccount.textContent = null;
+    setElements(globalUser);
+    console.log("you have to login");
+  }
+});
+
 links.forEach((anchor: HTMLAnchorElement) => {
   anchor.addEventListener("click", (event: any) => {
     event.preventDefault();
     const url = event.target.href;
     // console.log(url)
-    navigation(url)
-    
+    navigation(url);
   });
 });
 
-const loginMessage = document.querySelector(
-  "#login-form .submit-message p"
-) as Element;
-
-const signupMessage = document.querySelector(
-  "#signup-form .submit-message p"
-) as Element;
-
-export const loginForm = document.querySelector("#login-form") as HTMLFormElement;
 loginForm?.addEventListener("submit", async (event: any) => {
   event.preventDefault();
   const email = event.target.email.value;
@@ -44,14 +60,11 @@ loginForm?.addEventListener("submit", async (event: any) => {
       globalUser.email = email;
       globalUser.token = accessToken;
       globalUser.isVerified = true;
-      
 
-      loginMessage.textContent = `Logged succesfull ${user.email}`;
       event.target.reset();
-      setTimeout(() => {
-        navigation('/profile')
-        loginMessage.textContent = null;
-      }, 3000);
+
+      navigation("/profile");
+      loginMessage.textContent = null;
     } else {
       throw new Error("Debes Verificar tu email");
     }
@@ -59,7 +72,6 @@ loginForm?.addEventListener("submit", async (event: any) => {
     loginMessage.textContent = `${error}`;
   }
 });
-export const signUpForm = document.querySelector("#signup-form") as HTMLFormElement
 signUpForm?.addEventListener("submit", async (event: any) => {
   event.preventDefault();
   const email = event.target.email.value;
@@ -73,36 +85,53 @@ signUpForm?.addEventListener("submit", async (event: any) => {
     console.log(accessToken, uid, emailVerified);
     signupMessage.textContent = `Sign Up Successfull we send email to ${user.email} to verified your account`;
     event.target.reset();
-
   } catch (error) {
     console.error(error);
     signupMessage.textContent = `${error}`;
   }
 });
-export const emailAccount = document.querySelector('#email-account') as HTMLButtonElement
 
-const logout = document.querySelector("#logout");
 logout?.addEventListener("click", async () => {
   try {
     await auth.logout();
-    navigation('/')
+    navigation("/");
     console.log("logout succesfull");
   } catch (error) {
     console.error(error);
   }
 });
 
-const googleButtons = document.querySelectorAll('.google-button')
-googleButtons.forEach((button)=>{
-  button?.addEventListener('click',async (event) => {
-    event.preventDefault()
-    await auth.google()
-    loginMessage.textContent = 'Login succesfull!'
-    signupMessage.textContent = 'Login succesfull!'
-      setTimeout(() => {
-        loginMessage.textContent = null
-        signupMessage.textContent = null
-        navigation('/profile')
-      }, 3000);
-  })
+googleButtons.forEach((button) => {
+  button?.addEventListener("click", async (event) => {
+    event.preventDefault();
+    await auth.google();
+
+    loginMessage.textContent = null;
+    signupMessage.textContent = null;
+    navigation("/profile");
+  });
+});
+
+profileForm.addEventListener('submit',(event)=>{
+  event.preventDefault()
+  const target = event.target as HTMLFormElement
+  const phone = target?.phone.value
+  const rut = target?.rut.value
+  const address = target?.address.value
+  // validations
+
+  const data = {
+    phone,
+    rut,
+    address
+  }
+  console.log(data)
+  target.reset()
+  profileMessage.textContent = 'All Done'
+  // try {
+  //   api.addInfo(globalUser.token as string,data)
+  //   target.reset() 
+  // } catch (error) {
+  //   profileMessage.textContent = `${error}`
+  // }
 })
