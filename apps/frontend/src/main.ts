@@ -29,10 +29,14 @@ export let globalUser: User = {
 const api = profile();
 window.addEventListener("DOMContentLoaded", renderPage);
 auth.authObserver(async (user: any) => {
-  console.log(user)
   
-    if (user) {
-      console.log('logeado')
+    if (user?.emailVerified) {
+      const { accessToken, email } = user;
+      globalUser.email = email;
+      globalUser.token = accessToken;
+      globalUser.isVerified = true;
+      setElements(globalUser);
+      emailAccount.textContent = globalUser.email;
     } else {
       emailAccount.textContent = null;
       setElements(globalUser);
