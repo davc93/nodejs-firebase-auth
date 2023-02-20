@@ -29,20 +29,16 @@ export let globalUser: User = {
 const api = profile();
 window.addEventListener("DOMContentLoaded", renderPage);
 auth.authObserver(async (user: any) => {
-  if (user?.emailVerified) {
-    const { accessToken, email } = user;
-    globalUser.email = email;
-    globalUser.token = accessToken;
-    globalUser.isVerified = true;
-    setElements(globalUser);
-    emailAccount.textContent = globalUser.email;
-    // const userInfo = await api.getProfileInfo(globalUser.token as string)
-    // render
-  } else {
-    emailAccount.textContent = null;
-    setElements(globalUser);
-    console.log("you have to login");
-  }
+  console.log(user)
+  
+    if (user) {
+      console.log('logeado')
+    } else {
+      emailAccount.textContent = null;
+      setElements(globalUser);
+      console.log("you have to login");
+    }
+  
 });
 
 links.forEach((anchor: HTMLAnchorElement) => {
@@ -69,7 +65,8 @@ loginForm?.addEventListener("submit", async (event: any) => {
       globalUser.email = email;
       globalUser.token = accessToken;
       globalUser.isVerified = true;
-
+      setElements(globalUser);
+      emailAccount.textContent = globalUser.email
       event.target.reset();
 
       navigation("/profile");
@@ -86,7 +83,7 @@ loginForm?.addEventListener("submit", async (event: any) => {
 signUpForm?.addEventListener("submit", async (event: any) => {
   event.preventDefault();
   const loader = insertLoader() as HTMLButtonElement;
-  loginForm.querySelector("button")?.append(loader);
+  signUpForm.querySelector("button")?.append(loader);
 
   const email = event.target.email.value;
   const password = event.target.password.value;
@@ -119,6 +116,8 @@ googleButtons.forEach((button) => {
     button.append(loader);
     event.preventDefault();
     await auth.google();
+    setElements(globalUser);
+    emailAccount.textContent = globalUser.email
     loader.remove();
     loginMessage.textContent = null;
     signupMessage.textContent = null;
@@ -128,7 +127,7 @@ googleButtons.forEach((button) => {
 
 profileForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-  profileMessage.textContent = null
+  profileMessage.textContent = null;
   const loader = insertLoader() as HTMLButtonElement;
   profileForm.querySelector("button")?.append(loader);
   profileMessage.textContent = null;
@@ -163,11 +162,11 @@ profileForm.addEventListener("submit", async (event) => {
   ) {
     entries.forEach((entry) => {
       if (entry[1]) {
-        const error = document.createElement('span')
-        error.textContent = `${entry[0]} :${entry[1]}`
-        profileMessage.append(error)
+        const error = document.createElement("span");
+        error.textContent = `${entry[0]} :${entry[1]}`;
+        profileMessage.append(error);
       }
-    })
+    });
   } else {
     try {
       await api.addInfo(globalUser.token as string, data);

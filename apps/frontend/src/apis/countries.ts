@@ -9,7 +9,7 @@ export const getCountries =  async () => {
   if (false) {
     throw new Error(data.message);
   } else {
-    console.log(data)
+    // console.log(data)
     return data;
   }
 };

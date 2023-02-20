@@ -2,8 +2,8 @@ import { globalUser } from "./main";
 import { User } from "./models/user.model";
 
 
-
 function renderPage () {
+
   // detect path
   let currentPage: string | undefined;
   let path = window.location.pathname
@@ -78,6 +78,7 @@ function setElements(user:User) {
 }
 
 function navigation(page:string){
+  
   window.history.pushState({},"",page)
   renderPage()
 }
