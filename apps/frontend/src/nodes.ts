@@ -2,8 +2,6 @@ export const emailAccount = document.querySelector(
   '#email-account'
 ) as HTMLButtonElement
 
-
-
 export const signUpForm = document.querySelector(
   '#signup-form'
 ) as HTMLFormElement
@@ -17,6 +15,12 @@ export const profileForm = document.querySelector(
 export const loginMessage = document.querySelector(
   '#login-form .submit-message p'
 ) as Element
+
+
+
+
+
+
 export const profileMessage = document.querySelector(
   '#profile-form .submit-message'
 ) as Element
