@@ -9,7 +9,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pnpm run precommit"
+      "precommit": "pnpm run precommit"
     }
   },
   "keywords": [],
