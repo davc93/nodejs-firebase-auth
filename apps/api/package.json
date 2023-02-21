@@ -8,7 +8,11 @@
     "example": "example"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "dev": "nodemon ./src/index.js --inspect",
+    "lint":"eslint .",
+    "lint:fix":"eslint . --fix"
+
   },
   "repository": {
     "type": "git",
@@ -33,6 +37,9 @@
     "firebase-admin": "^11.4.1"
   },
   "devDependencies": {
-    "@types/node": "^18.14.0"
+    "@types/node": "^18.14.0",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.2"
   }
 }

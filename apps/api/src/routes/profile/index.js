@@ -1,10 +1,11 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
 
-router.get('/',getProfile)
-router.post('/',addInfo)
-router.put('/',updateAllInfo)
-router.patch('/',updateProfile)
-router.delete('/',deleteProfile)
+const router = express.Router();
 
-module.exports = router
+router.get('/', getProfile);
+router.post('/', addInfo);
+router.put('/', updateAllInfo);
+router.patch('/', updateProfile);
+router.delete('/', deleteProfile);
+
+module.exports = router;

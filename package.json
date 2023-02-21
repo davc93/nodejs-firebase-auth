@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "pnpm --filter './apps/**/*' run lint",
+    "lint:fix":"pnpm --filter './apps/**/*' run lint:fix",
     "precommit": "pnpm --filter frontend run lint:fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

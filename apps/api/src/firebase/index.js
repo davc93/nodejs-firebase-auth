@@ -1,12 +1,13 @@
-const {googleApplicationCredentials} = require('../config')
-const { applicationDefault, initializeApp} = require('firebase-admin/app')
+const { applicationDefault, initializeApp } = require('firebase-admin/app');
+const { googleApplicationCredentials } = require('../config');
+
 const initFirebase = () => {
   initializeApp({
-    credential: applicationDefault()
-})  
-}
+    credential: applicationDefault(),
+  });
+};
 
-initFirebase()
+initFirebase();
 export {
-  initFirebase
-}
+  initFirebase,
+};

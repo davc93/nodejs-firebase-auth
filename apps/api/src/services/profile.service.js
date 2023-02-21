@@ -1,23 +1,25 @@
-class ProfileService{
+class ProfileService {
+  getProfile(user) {
 
-    getProfile (user){
+  }
 
-    }
-    createInfo(user,data){
+  createInfo(user, data) {
 
-    }
-    updateAllInfo(user,data){
+  }
 
-    }
-    updateInfo(user,data){
+  updateAllInfo(user, data) {
 
-    }
-    deleteProfile(user){
+  }
 
-    }
+  updateInfo(user, data) {
 
+  }
+
+  deleteProfile(user) {
+
+  }
 }
 
 module.exports = {
-    ProfileService
-}
+  ProfileService,
+};

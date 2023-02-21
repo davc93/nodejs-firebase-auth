@@ -1,4 +1,4 @@
-import { getAuth } from "firebase-admin/auth";
+import { getAuth } from 'firebase-admin/auth';
 
 export function checkAuth(req, res, next) {
   if (req.headers.authorization) {
@@ -8,6 +8,6 @@ export function checkAuth(req, res, next) {
         next();
       });
   } else {
-    throw new Error("Necesita autenticacion");
+    throw new Error('Necesita autenticacion');
   }
 }
