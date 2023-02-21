@@ -17,7 +17,9 @@
           <li><a class="only-public" href="/">Login</a></li>
           <li><a class="only-public" href="/signup">Sign Up</a></li>
           <li><a class="private" href="/profile">Profile</a></li>
-          <li><h3 class="private" id="email-account"></h3></li>
+          <li>
+            <h3 class="private" id="email-account"></h3>
+          </li>
           <li><button class="private" id="logout" type="button">Logout</button></li>
         </ul>
       </div>
@@ -35,7 +37,7 @@
                   <label for="login-form__email">Email</label><input type="text" name="email" id="login-form__email" />
                 </div>
                 <div class="input-group">
-                  <label  for="login-form__password">Password</label><input type="password" name="password"
+                  <label for="login-form__password">Password</label><input type="password" name="password"
                     id="login-form__password" />
                 </div>
                 <button type="submit">Login With Email</button>
@@ -61,7 +63,7 @@
                     id="signup-form__email" />
                 </div>
                 <div class="input-group">
-                  <label  for="signup-form__password">Password</label><input type="password" name="password"
+                  <label for="signup-form__password">Password</label><input type="password" name="password"
                     id="signup-form__password" />
                 </div>
                 <button type="submit">Sign Up with Email</button>
@@ -114,7 +116,7 @@
                   <button type="submit">
                     Add Info</button>
                   <div class="submit-message">
-                    
+
                   </div>
                 </form>
               </div>
@@ -130,6 +132,11 @@
       <div class="/not-found">
         <header>
           <h1>Error 404, page not found</h1>
+        </header>
+      </div>
+      <div class="/unauthorized unauthorized">
+        <header>
+          <h1>You are not authorized</h1>
         </header>
       </div>
     </div>

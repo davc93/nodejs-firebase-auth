@@ -10,23 +10,30 @@ function renderPage () {
 
   // comparing pages with path
 
-  pages.forEach((node) => {
-    if (node.classList.contains(path)) {
+  pages.forEach((page) => {
+
+    if (page.classList.contains(path)) {
       currentPage = path
+      if(page.classList.contains('private') && !globalUser.isVerified){
+        currentPage = '/unauthorized'
+      }
       // console.log({'Page':currentPage})
       // console.log(currentPage)
     }
   })
-
   if (!currentPage) {
-    currentPage = 'not-found'
+    currentPage = '/not-found'
   }
 
   // add class inactive
   pages.forEach((node) => {
+
+    
+
     if (!node.classList.contains(currentPage as string)) {
       node.classList.add('inactive')
     } else {
+      
       node.classList.remove('inactive')
     }
   })
