@@ -117,13 +117,18 @@ googleButtons.forEach((button) => {
     const loader = insertLoader()
     button.append(loader)
     event.preventDefault()
-    await auth.google()
-    setElements(globalUser)
-    emailAccount.textContent = globalUser.email
+    try {
+      await auth.google()
+      setElements(globalUser)
+      emailAccount.textContent = globalUser.email
+      loader.remove()
+      loginMessage.textContent = null
+      signupMessage.textContent = null
+      navigation('/profile')
+    } catch (error) {
+      console.error(error)
+    }
     loader.remove()
-    loginMessage.textContent = null
-    signupMessage.textContent = null
-    navigation('/profile')
   })
 })
 

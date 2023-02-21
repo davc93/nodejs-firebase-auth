@@ -16,11 +16,6 @@ export const loginMessage = document.querySelector(
   '#login-form .submit-message p'
 ) as Element
 
-
-
-
-
-
 export const profileMessage = document.querySelector(
   '#profile-form .submit-message'
 ) as Element
