@@ -7,3 +7,18 @@ The following project is an implementation of the firebase authentication servic
 - Have a system already tested and constantly improved by Google
 
 
+## Techs
+
+### Frontend
+
+- firebase
+- typescript (vanilla)
+- html
+- css
+
+### Api
+
+- nodejs
+- express
+- jest
+- firebase
