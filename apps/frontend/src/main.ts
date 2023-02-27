@@ -177,7 +177,7 @@ profileForm.addEventListener('submit', async (event) => {
     })
   } else {
     try {
-      await api.addInfo(globalUser.token as string, data)
+      await api.updateInfo(globalUser.token as string, data)
       target.reset()
       profileMessage.textContent = 'All Done'
     } catch (error) {
