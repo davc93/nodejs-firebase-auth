@@ -1,7 +1,7 @@
 const { verifyIdToken } = require("../firebase/auth");
 
 async function checkAuth(req, res, next) {
-  console.log(req.headers.authorization)
+  
   if (!req.headers.authorization) {
     next(new Error("must be authenticate"));
   } else {
@@ -11,7 +11,7 @@ async function checkAuth(req, res, next) {
       req.user = user
       next()
     } catch (error) {
-      next(error);
+      next(new Error("auth failed"));
     }
   }
 }

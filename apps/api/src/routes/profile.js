@@ -18,8 +18,10 @@ router.patch('/',async(req,res,next)=>{
     
     try {
         const {body} = req
-        const data = await service.updateInfo(req.user.uid,body)
-        res.status(200).json(data)
+        await service.updateInfo(req.user.uid,body)
+        res.status(200).json({
+            message:"updated succesfull"
+        })
     } catch (error) {
         next(error)
     }

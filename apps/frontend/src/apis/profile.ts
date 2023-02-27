@@ -1,5 +1,4 @@
 import { config } from '../config'
- import {CreateDto} from '../models/api/profile.model'
 export default function profile () {
   async function getProfileInfo (token: string) {
     const response = await fetch(config.apiUri, {
@@ -10,53 +9,15 @@ export default function profile () {
 
       }
     })
-    const { error, data } = await response.json()
-    if (error) {
-      throw new Error(data.message)
+    const body = await response.json()
+    if (body.error) {
+      throw new Error(body.message)
     } else {
-      return data
+      return body
     }
   }
-  async function addInfo (token: string, info: Partial<CreateDto>) {
-    // console.log(token, info)
-    // const response = await fetch(config.apiUri,{
-    //     method:'POST',
-    //     headers:{
-    //         "Content-Type":"application/json",
-    //         "Authorization":token,
 
-    //     },
-    //     body:JSON.stringify(info)
-    // })
-    // const {error,data} = await response.json()
-    // if (error) {
-    //     throw new Error(data.message)
-    // } else {
-    //     return data
-    // }
-    console.log(token,info)
-    return {
-      message: 'datos actualizados'
-    }
-  }
-  async function updateAllInfo (token: string, info: any) {
-    const response = await fetch(config.apiUri, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-
-      },
-      body: info
-    })
-    const { error, data } = await response.json()
-    if (error) {
-      throw new Error(data.message)
-    } else {
-      return data
-    }
-  }
-  async function updateInfo (token: string, info: any) {
+  async function updateInfo (token: string, data: any) {
     const response = await fetch(config.apiUri, {
       method: 'PATCH',
       headers: {
@@ -64,13 +25,13 @@ export default function profile () {
         Authorization: `Bearer ${token}`
 
       },
-      body: info
+      body: data
     })
-    const { error, data } = await response.json()
-    if (error) {
-      throw new Error(data.message)
+    const body = await response.json()
+    if (body.error) {
+      throw new Error(body.message)
     } else {
-      return data
+      return body
     }
   }
   async function deleteProfile (token: string) {
@@ -82,18 +43,16 @@ export default function profile () {
 
       }
     })
-    const { error, data } = await response.json()
-    if (error) {
-      throw new Error(data.message)
+    const body = await response.json()
+    if (body.error) {
+      throw new Error(body.message)
     } else {
-      return data
+      return body
     }
   }
 
   return {
     getProfileInfo,
-    addInfo,
-    updateAllInfo,
     updateInfo,
     deleteProfile
   }
