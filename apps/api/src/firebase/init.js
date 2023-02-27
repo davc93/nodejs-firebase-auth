@@ -15,6 +15,6 @@ const initFirebase = () => {
 
 };
 
-export {
-  initFirebase,
-};
+module.exports ={
+  initFirebase
+}

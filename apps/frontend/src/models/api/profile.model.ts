@@ -1,4 +1,4 @@
-export interface createDto {
+export interface CreateDto {
   avatar: string
   birthday: Date
   country: string

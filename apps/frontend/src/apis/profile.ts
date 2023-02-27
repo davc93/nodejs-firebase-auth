@@ -1,13 +1,12 @@
 import { config } from '../config'
-import { type createDto } from '../models/api/profile.model'
-
+ import {CreateDto} from '../models/api/profile.model'
 export default function profile () {
   async function getProfileInfo (token: string) {
     const response = await fetch(config.apiUri, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token
+        Authorization: `Bearer ${token}`
 
       }
     })
@@ -18,9 +17,8 @@ export default function profile () {
       return data
     }
   }
-
-  async function addInfo (token: string, info: Partial<createDto>) {
-    console.log(token, info)
+  async function addInfo (token: string, info: Partial<CreateDto>) {
+    // console.log(token, info)
     // const response = await fetch(config.apiUri,{
     //     method:'POST',
     //     headers:{
@@ -36,6 +34,7 @@ export default function profile () {
     // } else {
     //     return data
     // }
+    console.log(token,info)
     return {
       message: 'datos actualizados'
     }
@@ -45,7 +44,7 @@ export default function profile () {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token
+        Authorization: `Bearer ${token}`
 
       },
       body: info
@@ -62,7 +61,7 @@ export default function profile () {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token
+        Authorization: `Bearer ${token}`
 
       },
       body: info
@@ -79,7 +78,7 @@ export default function profile () {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token
+        Authorization: `Bearer ${token}`
 
       }
     })

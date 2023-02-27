@@ -31,15 +31,17 @@ const logout = async () => {
 const google = async () => {
   const result = await signInWithPopup(auth, new GoogleAuthProvider())
   const { user } = result
-  console.log(user)
+  
   if (!user) {
     throw new Error('No te has autenticado')
   }
   const userCredentials = GoogleAuthProvider.credentialFromResult(result)
   globalUser.email = user.email as string
   globalUser.token = userCredentials?.accessToken as string
+  
   globalUser.isVerified = true
-  console.log(user)
+  console.log('login succesfull')
+  
 }
 const facebook = () => {}
 const authObserver = (callback: any) => {

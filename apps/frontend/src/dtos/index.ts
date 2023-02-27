@@ -1,4 +1,4 @@
-import { type createDto } from '../models/api/profile.model'
+import { type CreateDto } from '../models/api/profile.model'
 import { type Validator } from '../models/validator.model'
 
 export const rutDto: Validator = (value) => {
@@ -47,7 +47,7 @@ export const countryDto: Validator = () => {
   return true
 }
 
-export const validate = (data: Partial<createDto>) => {
+export const validate = (data: Partial<CreateDto>) => {
   const { address, avatar, rut, phone, birthday, country } = data
   const errors = {
     avatar: avatarDto(avatar) == true ? false : avatarDto(avatar),

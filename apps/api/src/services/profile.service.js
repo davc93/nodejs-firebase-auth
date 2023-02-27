@@ -1,22 +1,21 @@
+const admin = require('firebase-admin')
+
 class ProfileService {
-  getProfile(user) {
+  async getProfile(uid) {
+    const user = await admin.auth().getUser(uid)
+    return user
+  }
+
+  async updateInfo(uid, data) {
+    await admin.auth().setCustomUserClaims(uid,{
+      ...data
+    })
+
 
   }
 
-  createInfo(user, data) {
-
-  }
-
-  updateAllInfo(user, data) {
-
-  }
-
-  updateInfo(user, data) {
-
-  }
-
-  deleteProfile(user) {
-
+  async deleteProfile(uid) {
+    await admin.auth().deleteUser(uid)
   }
 }
 

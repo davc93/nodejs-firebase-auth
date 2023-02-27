@@ -4,6 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+
+    "dev": "pnpm --filter './apps/**/*' run dev",
+    "build": "pnpm --filter './apps/**/*' run build",
+
+    "start": "pnpm --filter './apps/**/*' run start",
     "lint": "pnpm --filter './apps/**/*' run lint",
     "lint:fix":"pnpm --filter './apps/**/*' run lint:fix",
     "precommit": "pnpm --filter frontend run lint:fix",

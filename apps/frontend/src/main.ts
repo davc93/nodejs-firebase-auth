@@ -17,7 +17,7 @@ import {
 import { getCountries } from './apis/countries'
 import { type Country } from './models/api/country.model'
 import { insertLoader } from './loader'
-import { type createDto } from './models/api/profile.model'
+import { type CreateDto } from './models/api/profile.model'
 import profile from './apis/profile'
 import { validate } from './dtos'
 export const globalUser: User = {
@@ -62,6 +62,7 @@ loginForm?.addEventListener('submit', async (event: any) => {
     const userCredentials = await auth.loginEmailAndPassword(email, password)
     const { user }: any = userCredentials
     const { accessToken, emailVerified } = user
+    
 
     if (emailVerified) {
       globalUser.email = email
@@ -149,7 +150,7 @@ profileForm.addEventListener('submit', async (event) => {
 
   const country = target?.country.value
 
-  const data: Partial<createDto> = {
+  const data: Partial<CreateDto> = {
     phone,
     rut,
     address,
