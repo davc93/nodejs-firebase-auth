@@ -1,5 +1,5 @@
 {
-  "name": "api",
+  "name": "firebase-api",
   "version": "1.0.0",
   "description": "Implementation of the firebase authentication service in a backend made in NodeJS",
   "main": "src/index.js",
@@ -11,8 +11,8 @@
     "test": "jest",
     "start": "node ./src/index.js",
     "dev": "nodemon ./src/index.js --inspect",
-    "users:create":"node ./src/scripts/signUp.js",
-    "users:login":"node ./src/scripts/login.js",
+    "users:create":"node ./scripts/signUp.js",
+    "users:login":"node ./scripts/login.js",
     "lint":"eslint .",
     "lint:fix":"eslint . --fix"
 

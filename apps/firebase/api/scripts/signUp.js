@@ -2,6 +2,7 @@ const admin = require("firebase-admin");
 const { initFirebase } = require("../firebase/init");
 const readline = require("readline");
 async function signUp(email, password) {
+  
   const response = await admin.auth().createUser({
     email,
     emailVerified: false,

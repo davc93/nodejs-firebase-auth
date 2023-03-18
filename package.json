@@ -1,5 +1,5 @@
 {
-  "name": "firebase-auth-express",
+  "name": "authentications",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
