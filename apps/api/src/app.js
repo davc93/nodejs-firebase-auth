@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const { initFirebase } = require('./firebase/init');
+const { initFirebase } = require('./firebase/');
 const { errorHandler } = require('./middlewares/error.handler');
 const profile = require('./routes/profile');
 const recovery = require('./routes/recovery');

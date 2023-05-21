@@ -1,5 +1,5 @@
 {
-  "name": "authentications",
+  "name": "firebase-nodejs-authentications",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,6 @@
 
     "dev": "pnpm --filter './apps/**/*' run dev",
     "build": "pnpm --filter './apps/**/*' run build",
-
     "start": "pnpm --filter './apps/**/*' run start",
     "lint": "pnpm --filter './apps/**/*' run lint",
     "lint:fix":"pnpm --filter './apps/**/*' run lint:fix",
